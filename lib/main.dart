@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,14 +22,28 @@ class MainApp extends StatelessWidget {
   }
 }
 
-class CounterScreen extends StatelessWidget {
+class CounterScreen extends StatefulWidget {
   const CounterScreen({super.key});
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      counter++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Counter App")),
-      body: Center(child: Text("Welcome to the Counter App")),
-    );
+      appBar: AppBar(title: Text("Counter App", textAlign: TextAlign.center,),),
+      body: Center(child: Text("Counter: $counter", style: const TextStyle(fontSize: 50), ),),
+      floatingActionButton: FloatingActionButton( onPressed: _incrementCounter, child: const Icon(Icons.add),),
+    ); 
   }
 }
