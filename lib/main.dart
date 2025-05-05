@@ -37,13 +37,26 @@ class _CounterScreenState extends State<CounterScreen> {
       counter++;
     });
   }
+  void _resetCounter() {
+    setState((){
+      counter=0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Counter App", textAlign: TextAlign.center,),),
-      body: Center(child: Text("Counter: $counter", style: const TextStyle(fontSize: 50), ),),
-      floatingActionButton: FloatingActionButton( onPressed: _incrementCounter, child: const Icon(Icons.add),),
+      appBar: AppBar(title: Text("CLICK COUNTER", textAlign: TextAlign.center,),),
+      body: Center(child: Column( mainAxisAlignment: MainAxisAlignment.center,
+        children: [ 
+          Text("$counter", style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold, fontFamily: "")),
+          const SizedBox(height: 8),
+          const Text("Clicks", style:TextStyle(fontSize: 18)),
+          const SizedBox(height: 24),
+          ElevatedButton( onPressed: _incrementCounter, child: const Text("Increment")),
+          const SizedBox(height: 12),
+          ElevatedButton( onPressed: _resetCounter, child: const Text("Reset")),
+      ],),),
     ); 
   }
 }
