@@ -46,17 +46,29 @@ class _CounterScreenState extends State<CounterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("CLICK COUNTER", textAlign: TextAlign.center,),),
-      body: Center(child: Column( mainAxisAlignment: MainAxisAlignment.center,
-        children: [ 
-          Text("$counter", style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold, fontFamily: "")),
-          const SizedBox(height: 8),
-          const Text("Clicks", style:TextStyle(fontSize: 18)),
-          const SizedBox(height: 24),
-          ElevatedButton( onPressed: _incrementCounter, child: const Text("Increment")),
-          const SizedBox(height: 12),
-          ElevatedButton( onPressed: _resetCounter, child: const Text("Reset")),
-      ],),),
+      appBar: AppBar(title: 
+          Center(
+            child: Text("CLICK COUNTER", style: TextStyle(letterSpacing: 1.5, fontWeight: FontWeight.bold),),
+          ),
+        ),
+      body: 
+        Center(child: Column( mainAxisAlignment: MainAxisAlignment.center,
+          children: [ 
+            Text("$counter", style: const TextStyle(fontSize: 64, fontWeight: FontWeight.bold, fontFamily: "")),
+            const SizedBox(height: 8),
+            const Text("Clicks", style:TextStyle(fontSize: 18)),
+            const SizedBox(height: 24),
+            Row( // have the buttons on the same line
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton( onPressed: _incrementCounter, child: const Text("Increment")),
+                const Text("   ", style:TextStyle(fontSize: 18)),
+                ElevatedButton( onPressed: _resetCounter, child: const Text("Reset")),
+              ]
+            ),
+          ],
+        ),
+      ),
     ); 
   }
 }
